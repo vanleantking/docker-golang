@@ -27,9 +27,9 @@ func main() {
 
 func connect() (*mongo.Client, error) {
 
-	connectURI := fmt.Sprintf("mongodb://%s:%s@%s:%s/%s", "vna_tracking", "vna_tracking", "mongo", "21707", "vna_tracking")
+	connectURI := fmt.Sprintf("mongodb://%s:%s@%s:%s/%s", "vna_tracking", "vna_tracking", "mongodb", "27017", "vna_tracking")
 	opt := options.Client().ApplyURI(connectURI)
-	opt.SetServerSelectionTimeout(60 * time.Second)
+	opt.SetServerSelectionTimeout(15 * time.Second)
 	opt.SetMaxConnIdleTime(10 * time.Second)
 	client, err := mongo.Connect(context.Background(), opt, nil)
 	if err != nil {
